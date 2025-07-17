@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-# describing what your Bash script does
-echo $$
+# its for the loops 
