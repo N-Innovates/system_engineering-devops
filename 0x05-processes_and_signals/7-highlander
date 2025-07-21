@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
-# Script that sends SIGTERM signal to the 7-highlander process
-# Find and send SIGTERM to the 7-highlander process
-pkill -f "7-highlander"
+# Script that displays "To infinity and beyond" indefinitely and handles SIGTERM signal
+# Set up signal handler for SIGTERM
+trap 'echo "I am invincible!!!"' SIGTERM
+# Infinite loop
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
