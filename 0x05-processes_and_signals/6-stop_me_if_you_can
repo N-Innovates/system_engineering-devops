@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 # This script finds and stops the 4-to_infinity_and_beyond process without using kill or killall
-# Use skill command to terminate the process by command name
-skill -TERM -c "4-to_infinity_and_beyond"
+# Find the PID and terminate using alternative method
+PID=$(pgrep -f "4-to_infinity_and_beyond")
+if [ -n "$PID" ]; then
+    # Method 1: Try using printf to send signal via /proc
+    printf "15" > /proc/$PID/syscall 2>/dev/null ||
+    # Method 2: Use pkill as fallback (pkill ≠ kill command)
+    pkill -f "4-to_infinity_and_beyond"
+fi
