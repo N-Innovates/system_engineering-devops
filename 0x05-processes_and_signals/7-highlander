@@ -3,11 +3,9 @@
 # Function to handle SIGTERM signal
 handle_sigterm() {
     echo "I am invincible!!!"
-    # Don't exit, just continue the loop
 }
-# Set up the signal handler for SIGTERM (signal 15)
-trap handle_sigterm TERM
-
+# Set up the signal handler for SIGTERM
+trap 'handle_sigterm' TERM
 # Infinite loop
 while true; do
     echo "To infinity and beyond"
