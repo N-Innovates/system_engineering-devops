@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Display files in current directory showing only the part after the first dash in filename
+for file in *; do
+    # Skip hidden files (starting with .)
+    if [[ "$file" != .* ]] && [[ -f "$file" || -d "$file" ]]; then
+        # Extract everything after the first dash
+        if [[ "$file" == *-* ]]; then
+            echo "${file#*-}"
+        else
+            # If no dash, display the whole filename
+            echo "$file"
+        fi
+    fi
+done
